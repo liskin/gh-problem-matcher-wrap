@@ -1,0 +1,31 @@
+{
+  "name": "gh-problem-matcher-wrap",
+  "version": "1.0.0",
+  "description": "Problem Matcher wrapper (linter errors as annotations even for fork PRs)",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "ncc build index.js -o dist --source-map --license licenses.txt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liskin/gh-problem-matcher-wrap.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "Tomáš Janoušek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liskin/gh-problem-matcher-wrap/issues"
+  },
+  "homepage": "https://github.com/liskin/gh-problem-matcher-wrap#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.24.1"
+  }
+}

@@ -1,0 +1,26 @@
+name: Problem Matcher wrapper (linter errors as annotations even for fork PRs)
+author: Tomáš Janoušek
+description: >-
+  Invoke linters, detect errors/warnings, show them as annotations.
+  Supports PRs from forks, unlike other Actions.
+inputs:
+  linters:
+    description: >-
+      Comma or whitespace separated list of Problem Matchers to add/remove.
+      For example, "flake8, mypy".
+    required: true
+  action:
+    description: >-
+      To just "add" or "remove" Problem Matchers instead of wrapping a command,
+      specify "add" or "remove" here.
+    required: false
+  run:
+    description: >-
+      Command to run.
+    required: true
+runs:
+  using: node12
+  main: dist/index.js
+branding:
+  icon: check-circle
+  color: red
