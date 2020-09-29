@@ -5,11 +5,12 @@
       "severity": "error",
       "pattern": [
         {
-          "regexp": "^([^:]*):(\\d+):(?:(\\d+):)? error: (.*)$",
+          "regexp": "^([^:]*):(\\d+):(?:(\\d+):)? error: (.*?)(?:  \\[(\\S+)\\])?$",
           "file": 1,
           "line": 2,
           "column": 3,
-          "message": 4
+          "message": 4,
+          "code": 5
         }
       ]
     }
