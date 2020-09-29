@@ -73,7 +73,12 @@ A screenshot and an example (further down) is worth a thousand words:
 
 ### Supported linters
 
-* [flake8](problem-matchers/flake8.json)
-* [mypy](problem-matchers/mypy.json)
+* [flake8](https://flake8.pycqa.org/)
+* [gcc](https://gcc.gnu.org/)
+* [mypy](http://mypy-lang.org/)
+* [shellcheck](https://github.com/koalaman/shellcheck#readme) (`-f gcc` + gcc problem matcher)
+
+For details, sources and licenses of individual problem matchers, see
+[problem-matchers/](problem-matchers/).
 
 Pull Requests with additional linters welcome!
