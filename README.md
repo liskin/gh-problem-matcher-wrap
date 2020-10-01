@@ -75,6 +75,7 @@ A screenshot and an example (further down) is worth a thousand words:
 
 * [flake8](https://flake8.pycqa.org/)
 * [gcc](https://gcc.gnu.org/)
+* [isort](https://pycqa.github.io/isort/)
 * [mypy](http://mypy-lang.org/)
 * [shellcheck](https://github.com/koalaman/shellcheck#readme) (`-f gcc` + gcc problem matcher)
 
