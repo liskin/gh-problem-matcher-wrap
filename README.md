@@ -41,6 +41,16 @@ A screenshot and an example (further down) is worth a thousand words:
       with:
         linters: mypy
         run: mypy --show-column-numbers src/
+    - name: isort
+      uses: liskin/gh-problem-matcher-wrap@v1
+      with:
+        linters: isort
+        run: isort --check src/
+    - name: pytest
+      uses: liskin/gh-problem-matcher-wrap@v1
+      with:
+        linters: pytest
+        run: pytest
 ```
 
 ```yaml
@@ -77,6 +87,7 @@ A screenshot and an example (further down) is worth a thousand words:
 * [gcc](https://gcc.gnu.org/)
 * [isort](https://pycqa.github.io/isort/)
 * [mypy](http://mypy-lang.org/)
+* [pytest](https://pytest.org/)
 * [shellcheck](https://github.com/koalaman/shellcheck#readme) (`-f gcc` + gcc problem matcher)
 
 For details, sources and licenses of individual problem matchers, see
