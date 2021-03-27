@@ -94,3 +94,46 @@ For details, sources and licenses of individual problem matchers, see
 [problem-matchers/](problem-matchers/).
 
 Pull Requests with additional linters welcome!
+
+### Annotation Limitations
+
+GitHub imposes limitations on the total number of annotations a step or job may create [[Source 1](https://github.community/t/annotation-limitation/17998/2)][[Source 2](https://github.community/t/maximum-number-of-annotations-that-can-be-created-using-github-actions-logging-commands/16991)]. If a linter finds more problems than what may be annotated, only a random subset of the reported errors/warnings will be annotated. In either case, all found errors are reported in the action's logs. The exact limitations are:
+
+- 10 warning annotations and 10 error annotations per step
+- 50 annotations per job (sum of annotations from all the steps)
+- 50 annotations per run (separate from the job annotations, these annotations aren’t created by users
+
+
+One approach to (partially) counteract this limitation is to split the linting into multiple steps/jobs. This can be done on a per linter or per folder basis. Example:
+
+```yaml
+jobs:
+  # this job can annotate up to 50 errors/warnings
+  lint_core:
+    ...
+    steps:
+      ...
+      # this step can annotate up to 10 errors/warnings
+      - name: Flake8 Module1
+        uses: liskin/gh-problem-matcher-wrap@v1
+        with:
+          linters: flake8
+          run: flake8 src/core/module1
+      # this step can annotate an additional 10
+      - name: Flake8 Module2
+        uses: liskin/gh-problem-matcher-wrap@v1
+        with:
+          linters: flake8
+          run: flake8 src/core/module2
+  # this job can annotate an additioanal 50 errors/warnings
+  lint_plugins:
+    ...
+    steps:
+      ...
+      # this step can annotate up to 10 errors/warnings
+      - name: Flake8
+        uses: liskin/gh-problem-matcher-wrap@v1
+        with:
+          linters: flake8
+          run: flake8 src/plugins/ 
+```
