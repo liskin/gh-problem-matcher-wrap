@@ -32,29 +32,29 @@ A screenshot and an example (further down) is worth a thousand words:
 
 ```yaml
     - name: flake8
-      uses: liskin/gh-problem-matcher-wrap@v1
+      uses: liskin/gh-problem-matcher-wrap@v2
       with:
         linters: flake8
         run: flake8 src/
     - name: mypy
-      uses: liskin/gh-problem-matcher-wrap@v1
+      uses: liskin/gh-problem-matcher-wrap@v2
       with:
         linters: mypy
         run: mypy --show-column-numbers src/
     - name: isort
-      uses: liskin/gh-problem-matcher-wrap@v1
+      uses: liskin/gh-problem-matcher-wrap@v2
       with:
         linters: isort
         run: isort --check src/
     - name: pytest
-      uses: liskin/gh-problem-matcher-wrap@v1
+      uses: liskin/gh-problem-matcher-wrap@v2
       with:
         linters: pytest
         run: pytest
 ```
 
 ```yaml
-    - uses: liskin/gh-problem-matcher-wrap@v1
+    - uses: liskin/gh-problem-matcher-wrap@v2
       with:
         action: add
         linters: flake8, mypy
@@ -63,7 +63,7 @@ A screenshot and an example (further down) is worth a thousand words:
         # possibly complex multiline shell script
         flake8 src/
         mypy --show-column-numbers src/
-    - uses: liskin/gh-problem-matcher-wrap@v1
+    - uses: liskin/gh-problem-matcher-wrap@v2
       with:
         action: remove
         linters: flake8, mypy
@@ -115,13 +115,13 @@ jobs:
       ...
       # this step can annotate up to 10 errors/warnings
       - name: Flake8 Module1
-        uses: liskin/gh-problem-matcher-wrap@v1
+        uses: liskin/gh-problem-matcher-wrap@v2
         with:
           linters: flake8
           run: flake8 src/core/module1
       # this step can annotate an additional 10
       - name: Flake8 Module2
-        uses: liskin/gh-problem-matcher-wrap@v1
+        uses: liskin/gh-problem-matcher-wrap@v2
         with:
           linters: flake8
           run: flake8 src/core/module2
@@ -132,7 +132,7 @@ jobs:
       ...
       # this step can annotate up to 10 errors/warnings
       - name: Flake8
-        uses: liskin/gh-problem-matcher-wrap@v1
+        uses: liskin/gh-problem-matcher-wrap@v2
         with:
           linters: flake8
           run: flake8 src/plugins/ 
