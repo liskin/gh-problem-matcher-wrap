@@ -4125,7 +4125,7 @@ async function main() {
 
 	if (action == "run" || action == "add") {
 		for (const file of problemMatcherFiles) {
-			console.log(`Add matcher: ${file}`)
+			core.debug(`Add matcher: ${file}`)
 			console.log(`::add-matcher::${file}`)
 		}
 	}
@@ -4140,7 +4140,7 @@ async function main() {
 
 	if (action == "run" || action == "remove") {
 		for (const owner of owners) {
-			console.log(`Remove matcher: ${owner}`);
+			core.debug(`Remove matcher: ${owner}`);
 			console.log(`::remove-matcher owner=${owner}::`);
 		}
 	}
