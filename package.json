@@ -1,6 +1,6 @@
 {
   "name": "gh-problem-matcher-wrap",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Problem Matcher wrapper (linter errors as annotations even for fork PRs)",
   "main": "index.js",
   "scripts": {
