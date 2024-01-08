@@ -31,6 +31,11 @@ A screenshot and an example (further down) is worth a thousand words:
 ## Usage
 
 ```yaml
+    - name: codespell
+      uses: liskin/gh-problem-matcher-wrap@v1
+      with:
+        linters: codespell
+        run: codespell src/
     - name: flake8
       uses: liskin/gh-problem-matcher-wrap@v2
       with:
@@ -51,6 +56,11 @@ A screenshot and an example (further down) is worth a thousand words:
       with:
         linters: pytest
         run: pytest
+    - name: sort
+      uses: liskin/gh-problem-matcher-wrap@v1
+      with:
+        linters: sort
+        run: sort -c src/foo.txt
 ```
 
 ```yaml
@@ -83,11 +93,13 @@ A screenshot and an example (further down) is worth a thousand words:
 
 ### Supported linters
 
+* [codespell](https://github.com/codespell-project/codespell/)
 * [flake8](https://flake8.pycqa.org/)
 * [gcc](https://gcc.gnu.org/)
 * [isort](https://pycqa.github.io/isort/)
 * [mypy](http://mypy-lang.org/)
 * [pytest](https://pytest.org/)
+* [sort](https://www.gnu.org/software/coreutils/)
 * [shellcheck](https://github.com/koalaman/shellcheck#readme) (`-f gcc` + gcc problem matcher)
 
 For details, sources and licenses of individual problem matchers, see
