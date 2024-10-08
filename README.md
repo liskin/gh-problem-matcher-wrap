@@ -125,7 +125,7 @@ jobs:
         with:
           linters: flake8
           run: flake8 src/core/module2
-  # this job can annotate an additioanal 50 errors/warnings
+  # this job can annotate an additional 50 errors/warnings
   lint_plugins:
     ...
     steps:
