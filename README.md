@@ -31,42 +31,77 @@ A screenshot and an example (further down) is worth a thousand words:
 ## Usage
 
 ```yaml
-    - name: flake8
-      uses: liskin/gh-problem-matcher-wrap@v2
-      with:
-        linters: flake8
-        run: flake8 src/
-    - name: mypy
-      uses: liskin/gh-problem-matcher-wrap@v2
-      with:
-        linters: mypy
-        run: mypy --show-column-numbers src/
-    - name: isort
-      uses: liskin/gh-problem-matcher-wrap@v2
-      with:
-        linters: isort
-        run: isort --check src/
-    - name: pytest
-      uses: liskin/gh-problem-matcher-wrap@v2
-      with:
-        linters: pytest
-        run: pytest
+jobs:
+  lint:
+    # …
+    steps:
+      # …
+      - name: flake8
+        uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          linters: flake8
+          run: flake8 src/
+      - name: mypy
+        uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          linters: mypy
+          run: mypy --show-column-numbers src/
+      - name: isort
+        uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          linters: isort
+          run: isort --check src/
+      - name: pytest
+        uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          linters: pytest
+          run: pytest
 ```
 
 ```yaml
-    - uses: liskin/gh-problem-matcher-wrap@v2
-      with:
-        action: add
-        linters: flake8, mypy
-    - name: Lint
-      run: |
-        # possibly complex multiline shell script
-        flake8 src/
-        mypy --show-column-numbers src/
-    - uses: liskin/gh-problem-matcher-wrap@v2
-      with:
-        action: remove
-        linters: flake8, mypy
+jobs:
+  lint:
+    # …
+    steps:
+      # …
+      - uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          action: add
+          linters: flake8, mypy
+      - name: Lint
+        run: |
+          # possibly complex multiline shell script
+          flake8 src/
+          mypy --show-column-numbers src/
+      - uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          action: remove
+          linters: flake8, mypy
+```
+
+```yaml
+jobs:
+  lint:
+    # …
+
+    defaults:
+      run:
+        working-directory: path/to/subproject
+
+    steps:
+      # …
+      - uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          action: add
+          linters: mypy
+      - name: Lint
+        run: |
+          # --show-absolute-path needed because of defaults.run.working-directory
+          mypy --show-column-numbers --show-absolute-path src/
+      - uses: liskin/gh-problem-matcher-wrap@v2
+        with:
+          action: remove
+          linters: mypy
 ```
 
 ### Parameters
