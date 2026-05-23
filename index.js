@@ -32,7 +32,6 @@ async function main() {
 		try {
 			await exec.exec(run);
 		} catch (e) {
-			console.log(e);
 			core.setFailed(e.message);
 		}
 	}
