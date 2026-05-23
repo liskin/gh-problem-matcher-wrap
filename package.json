@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/liskin/gh-problem-matcher-wrap#readme",
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "^3.0.1",
     "@actions/exec": "^3.0.0"
   },
   "devDependencies": {
