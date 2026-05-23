@@ -30960,7 +30960,6 @@ async function main() {
 		try {
 			await exec_exec(run);
 		} catch (e) {
-			console.log(e);
 			setFailed(e.message);
 		}
 	}
