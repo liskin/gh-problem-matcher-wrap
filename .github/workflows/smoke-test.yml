@@ -1,0 +1,41 @@
+name: Smoke Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  UV_EXCLUDE_NEWER: '1 week'
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          add-problem-matchers: false
+          enable-cache: false
+
+      - name: Install flake8
+        run: uv tool install flake8
+
+      - name: Prepare test.py
+        run:
+          echo foo > test.py
+
+      - name: Run the action
+        uses: ./
+        with:
+          linters: flake8
+          run: sh -c "flake8 test.py || :"
